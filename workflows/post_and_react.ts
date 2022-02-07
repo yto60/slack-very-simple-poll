@@ -3,18 +3,19 @@ import { AddReaction } from "../functions/add_reaction.ts";
 
 export const PostAndReact = DefineWorkflow("post_and_react", {
   title: "Post, react",
-  description: "Posts a string and adds reaction",
+  description: "Posts a string and adds reactions",
   input_parameters: {
-    required: ["string_to_post", "channel", "stampName"],
+    required: ["stringToPost", "channel", "stampNames"],
     properties: {
-      string_to_post: {
+      stringToPost: {
         type: Schema.types.string,
       },
       channel: {
         type: Schema.slack.types.channel_id,
       },
-      stampName: {
+      stampNames: {
         type: Schema.types.string,
+        description: "スタンプ名のリストをカンマ区切りで (例: one,two,three)",
       },
     },
   },
@@ -22,12 +23,12 @@ export const PostAndReact = DefineWorkflow("post_and_react", {
 
 const { ts } = PostAndReact.addStep(Schema.slack.functions.SendMessage, {
   channel_id: PostAndReact.inputs.channel,
-  message: PostAndReact.inputs.string_to_post,
+  message: PostAndReact.inputs.stringToPost,
 }).outputs;
 
-const { channel, stampName } = PostAndReact.inputs;
+const { channel, stampNames } = PostAndReact.inputs;
 PostAndReact.addStep(AddReaction, {
   channel,
-  stampName,
+  stampNames,
   timestamp: ts,
 });

@@ -10,5 +10,5 @@ export const AddReactionTrigger = DefineTrigger("addReaction", {
   .withInputs((ctx) => ({
     channel: ctx.data.channel_id,
     timestamp: ctx.data.message.ts,
-    stampName: "thumbsup",
+    stampNames: "one,two,three",
   }));
