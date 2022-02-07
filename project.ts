@@ -5,12 +5,11 @@ import { AddReactionWorkflow } from "./workflows/add_reaction.ts";
 import { PostAndReactShortcut } from "./triggers/post_and_react_shortcut.ts";
 
 Project({
-  name: "test-app",
-  description:
-    "A demo showing how to use Slack workflows, functions, and triggers",
+  name: "poll-with-stamp-helper",
+  description: "Post to slack and add reaction immediately",
   icon: "assets/icon.png",
   runtime: "deno1.x",
-  botScopes: ["commands", "chat:write", "chat:write.public"],
+  botScopes: ["commands", "chat:write", "chat:write.public", "reactions:write"],
   functions: [AddReaction],
   workflows: [PostAndReact, AddReactionWorkflow],
   triggers: [PostAndReactShortcut],
