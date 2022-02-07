@@ -1,10 +1,7 @@
 import { Project } from "slack-cloud-sdk/mod.ts";
-import { ReverseString } from "./functions/reverse.ts";
-import { ReverseEchoString } from "./workflows/reverse_echo.ts";
-import { ReverseEchoShortcut } from "./triggers/reverse_echo_shortcut.ts";
-// import the Reversals table and include it in the `tables` array
-// below to store data via the Tables API
-// import { Reversals } from "./tables/reversals.ts";
+import { AddReaction } from "./functions/add_reaction.ts";
+import { PostAndReact } from "./workflows/post_and_react.ts";
+import { PostAndReactShortcut } from "./triggers/post_and_react_shortcut.ts";
 
 Project({
   name: "test-app",
@@ -13,9 +10,9 @@ Project({
   icon: "assets/icon.png",
   runtime: "deno1.x",
   botScopes: ["commands", "chat:write", "chat:write.public"],
-  functions: [ReverseString],
-  workflows: [ReverseEchoString],
-  triggers: [ReverseEchoShortcut],
+  functions: [AddReaction],
+  workflows: [PostAndReact],
+  triggers: [PostAndReactShortcut],
   tables: [],
   outgoingDomains: [],
 });
