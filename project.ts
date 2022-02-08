@@ -8,7 +8,7 @@ import { RepostAndReactTrigger } from "./triggers/repost_and_react_trigger.ts.ts
 Project({
   name: "poll-with-stamp-helper",
   description: "Post to slack and add reaction immediately",
-  icon: "assets/icon.png",
+  icon: "assets/senkyo_bako.png",
   runtime: "deno1.x",
   botScopes: ["commands", "chat:write", "chat:write.public", "reactions:write"],
   functions: [AddReaction],
