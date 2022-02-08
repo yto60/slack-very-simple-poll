@@ -3,8 +3,8 @@ import { PostAndReact } from "../workflows/post_and_react.ts";
 
 export const PostAndReactShortcut = DefineTrigger("postAndReactShortcut", {
   type: TriggerTypes.Shortcut,
-  name: "Post and React",
-  description: "Posts a string and adds emoji reaction",
+  name: "Very Simple Poll",
+  description: "Posts a string and adds emoji reactions",
 })
   .runs(PostAndReact)
   .withInputs((ctx) => ({

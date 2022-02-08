@@ -7,15 +7,18 @@ export const RepostAndReact = DefineWorkflow("post_and_react", {
   input_parameters: {
     required: ["channel", "stampNames", "stringToPost"],
     properties: {
+      stringToPost: {
+        type: Schema.types.string,
+        description: "Question",
+      },
       channel: {
         type: Schema.slack.types.channel_id,
+        description: "Channel",
       },
       stampNames: {
         type: Schema.types.string,
-        description: "スタンプ名のリストをカンマ区切りで (例: one,two,three)",
-      },
-      stringToPost: {
-        type: Schema.types.string,
+        description:
+          "Emoji names to react with, splitted in comma (example: one,two,three)",
       },
     },
   },

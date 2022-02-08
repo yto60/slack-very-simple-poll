@@ -1,10 +1,10 @@
 import { DefineTrigger, TriggerTypes } from "slack-cloud-sdk/mod.ts";
 import { AddReactionWorkflow } from "../workflows/add_reaction.ts";
 
-export const AddReactionTrigger = DefineTrigger("addReaction", {
+export const AddReactionMessageShortcut = DefineTrigger("addReaction", {
   type: TriggerTypes.MessageShortcut,
   name: "add reaction",
-  description: "for debug",
+  description: "Adds reaction to message. (for debug)",
 })
   .runs(AddReactionWorkflow)
   .withInputs((ctx) => ({

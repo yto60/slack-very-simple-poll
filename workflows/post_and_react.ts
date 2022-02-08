@@ -9,13 +9,16 @@ export const PostAndReact = DefineWorkflow("post_and_react", {
     properties: {
       stringToPost: {
         type: Schema.types.string,
+        description: "Question",
       },
       channel: {
         type: Schema.slack.types.channel_id,
+        description: "Channel",
       },
       stampNames: {
         type: Schema.types.string,
-        description: "スタンプ名のリストをカンマ区切りで (例: one,two,three)",
+        description:
+          "Emoji names to react with, splitted in comma (example: one,two,three)",
       },
     },
   },

@@ -3,7 +3,7 @@ import { AddReaction } from "../functions/add_reaction.ts";
 
 export const AddReactionWorkflow = DefineWorkflow("add_reaction_workflow", {
   title: "Add reactions",
-  description: "for debug",
+  description: "Adds reaction to message. (for debug)",
   input_parameters: {
     required: ["string_to_post", "channel", "stampName"],
     properties: {
