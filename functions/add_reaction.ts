@@ -1,5 +1,4 @@
 import { DefineFunction, Schema } from "slack-cloud-sdk/mod.ts";
-import { SLACK_API_URL } from "../utils/index.ts";
 
 export const AddReaction = DefineFunction(
   "add_reaction",
@@ -26,25 +25,16 @@ export const AddReaction = DefineFunction(
       properties: {},
     },
   },
-  async ({ inputs, env }) => {
-    const token = env["SLACK_API_SECRET_TOKEN"];
-
+  async ({ inputs, client }) => {
     const { channel, timestamp, stampNames } = inputs;
 
     for (const name of stampNames.split(",")) {
       const params = { channel, name, timestamp };
-      const url = `${SLACK_API_URL}/reactions.add?${new URLSearchParams(
-        params,
-      )}`;
 
-      await fetch(
-        url,
-        {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        },
-      ).then((res) => res.text())
+      await client.call(
+        "reactions.add",
+        params,
+      )
         .catch((err) => {
           console.log(err);
         });
